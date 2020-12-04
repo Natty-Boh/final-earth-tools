@@ -8,14 +8,21 @@
   <input type="radio" id="inf" name="unit" value="inf">
   <label for="inf">Infantry</label><br>
   <input type="radio" id="tungsbrem" name="unit" value="tungsbrem">
-  <label for="tungsbrem">Tungs/Brem</label><br>
+  <label for="tungsbrem">Tungs/Brem (Tanks Anti-Air)</label><br>
   <input type="radio" id="suireb" name="unit" value="suireb">
   <label for="suireb">Suirebs</label><br>
+  <input type="radio" id="vod" name="unit" value="vod">
+  <label for="vod">Vodniks/MLR (Jeeps Anti-Infantry)</label><br>
+  <input type="radio" id="blk" name="unit" value="blk">
+  <label for="vod">Black Eagles/Brem</label><br>
+   <input type="radio" id="t98" name="unit" value="t98">
+  <label for="t98">Type 98/Brem</label><br>
+  
   Funds: <input type="text" name="funds" <br><br>
 </form> 
-
+<br>
 <button onclick="myFunction()">Submit</button>
-
+<br>
 <p id="demo"></p> <br>
 <p id="demo2"></p>
 
@@ -35,24 +42,7 @@ function myFunction() {
      var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " 		assault<br>" + Math.floor(number * 1) + " medic<br>" 
 	}
     if (document.getElementById('tungsbrem').checked) {
-        var funds = x.elements[i].value 
-     var tungcost = 3500000
-     var bremcost = 5000000
-     var total = tungcost * 19 + bremcost * 1;
-     var number = funds / total
-     
-     var tungcount = Math.floor(number*19)
-     var bremcount = Math.floor(number)
-     var tungprice = tungcount * 3500000
-     var bremprice = bremcount*5000000
-     var totalprice = bremprice + tungprice
-     var leftover = funds- totalprice
-     if (leftover >= tungcost) {
-          var text = (tungcount-1) + " tungs <br>" + (bremcount+1) + " 		brem <br>" 
-
-     } else {
-       var text = (tungcount-2) + " tungs <br>" + (bremcount+1) + " 		brem <br>"
-     } 
+       var text = tanks(x, i,  3500000, "tungs")
       
 	}
     if (document.getElementById('suireb').checked) {
@@ -62,13 +52,50 @@ function myFunction() {
       var number = x.elements[i].value / total
       var text = Math.floor(number * 1) + " suicide bombers <br>" + Math.floor(number * 4) + " 		rebels <br>" 
       }
+      if (document.getElementById('vod').checked) {
+      var vod = 3 * 300000
+      var mlr = 1 * 3000000
+      var total = vod + mlr;
+      var number = x.elements[i].value / total
+      var text = Math.floor(number * 3) + " vodnik <br>" + Math.floor(number * 1) + " 		MLR <br>" 
+      }
  
- 
+	 if (document.getElementById('blk').checked) {
+       var text = tanks(x, i,  8000000, "black eagles")
+      
+	}
+    if (document.getElementById('t98').checked) {
+       var text = tanks(x, i,  2150000, "type 98")
+      
+	}
    
   }
-  document.getElementById("demo").innerHTML = text;
+    document.getElementById("demo").innerHTML = text;
+ }
+  
+  function tanks(x, i, unitcost, unitname) {
+     var funds = x.elements[i].value 
+     var tungcost = unitcost
+     var bremcost = 5000000
+     var total = tungcost * 19 + bremcost * 1;
+     var number = funds / total
+     
+     var tungcount = Math.floor(number*19)
+     var bremcount = Math.floor(number)
+     var tungprice = tungcount * tungcost
+     var bremprice = bremcount * bremcost
+     var totalprice = bremprice + tungprice
+     var leftover = funds- totalprice
 
-}
+     if (leftover >= tungcost) {
+          return (tungcount-1) + " "+ unitname + " <br>" + (bremcount+1) + " 		brem <br>" 
+
+     } else {
+       return (tungcount-2) + " " + unitname + "<br>" + (bremcount+1) + " 		brem <br>"
+     } 
+  } 
+
+
 </script>
 
 </body>
