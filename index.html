@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<h2> Axis build calculator </h2>
 <p>Enter your funds below to see how many units you can buy </p>
 
 <form id="frm1">
+  <input type="radio" id="inf" name="unit" value="inf">
+  <label for="inf">Infantry</label><br>
+  <input type="radio" id="tungsbrem" name="unit" value="tungsbrem">
+  <label for="tungsbrem">Tungs/Brem</label><br>
+  <input type="radio" id="suireb" name="unit" value="suireb">
+  <label for="suireb">Suirebs</label><br>
   Funds: <input type="text" name="funds" <br><br>
 </form> 
 
@@ -18,12 +24,31 @@ function myFunction() {
   var text = "";
   var i;
   for (i = 0; i < x.length ;i++) {
-    var support = 13 * 100000
-    var assault = 6 * 125000
-    var medic = 1 * 250000
-    var total = support + assault + medic;
-    var number = x.elements[i].value / total
-    var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " assault<br>" + Math.floor(number * 1) + " medic<br>" 
+	if (document.getElementById('inf').checked) {
+     var support = 13 * 100000
+     var assault = 6 * 125000
+     var medic = 1 * 250000
+     var total = support + assault + medic;
+     var number = x.elements[i].value / total
+     var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " 		assault<br>" + Math.floor(number * 1) + " medic<br>" 
+	}
+    if (document.getElementById('tungsbrem').checked) {
+     var tung = 19 * 3500000
+     var brem = 1 * 5000000
+     var total = tung + brem;
+     var number = x.elements[i].value / total
+     var text = Math.floor(number * 19) + " tungs <br>" + Math.floor(number * 1) + " 		brem <br>" 
+	}
+    if (document.getElementById('suireb').checked) {
+      var sui = 4 * 150000
+      var reb = 1 * 35000
+      var total = sui + reb;
+      var number = x.elements[i].value / total
+      var text = Math.floor(number * 4) + " suicide bombers <br>" + Math.floor(number * 1) + " 		rebels <br>" 
+      }
+ 
+ 
+   
   }
   document.getElementById("demo").innerHTML = text;
 }
