@@ -2,7 +2,7 @@
 <html>
 <body>
 <h2> Axis build calculator </h2>
-<p>Enter your funds below to see how many units you can buy </p>
+<p>Enter your funds below and select your build to see how many units you can buy </p>
 
 <form id="frm1">
   <input type="radio" id="inf" name="unit" value="inf">
@@ -16,7 +16,9 @@
 
 <button onclick="myFunction()">Submit</button>
 
-<p id="demo"></p>
+<p id="demo"></p> <br>
+<p id="demo2"></p>
+
 
 <script>
 function myFunction() {
@@ -33,24 +35,39 @@ function myFunction() {
      var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " 		assault<br>" + Math.floor(number * 1) + " medic<br>" 
 	}
     if (document.getElementById('tungsbrem').checked) {
-     var tung = 19 * 3500000
-     var brem = 1 * 5000000
-     var total = tung + brem;
-     var number = x.elements[i].value / total
-     var text = Math.floor(number * 19) + " tungs <br>" + Math.floor(number * 1) + " 		brem <br>" 
+        var funds = x.elements[i].value 
+     var tungcost = 3500000
+     var bremcost = 5000000
+     var total = tungcost * 19 + bremcost * 1;
+     var number = funds / total
+     
+     var tungcount = Math.floor(number*19)
+     var bremcount = Math.floor(number)
+     var tungprice = tungcount * 3500000
+     var bremprice = bremcount*5000000
+     var totalprice = bremprice + tungprice
+     var leftover = funds- totalprice
+     if (leftover >= tungcost) {
+          var text = (tungcount-1) + " tungs <br>" + (bremcount+1) + " 		brem <br>" 
+
+     } else {
+       var text = (tungcount-2) + " tungs <br>" + (bremcount+1) + " 		brem <br>"
+     } 
+      
 	}
     if (document.getElementById('suireb').checked) {
-      var sui = 4 * 150000
-      var reb = 1 * 35000
+      var sui = 1 * 150000
+      var reb = 4 * 35000
       var total = sui + reb;
       var number = x.elements[i].value / total
-      var text = Math.floor(number * 4) + " suicide bombers <br>" + Math.floor(number * 1) + " 		rebels <br>" 
+      var text = Math.floor(number * 1) + " suicide bombers <br>" + Math.floor(number * 4) + " 		rebels <br>" 
       }
  
  
    
   }
   document.getElementById("demo").innerHTML = text;
+
 }
 </script>
 
