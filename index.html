@@ -2,17 +2,30 @@
 <html>
 <body>
 
-<p>Enter names in the fields, then click "Submit" to submit the form:</p>
+<p>Enter your funds below to see how many units you can buy </p>
 
-<form id="frm1" action="/action_page.php">
-  First name: <input type="text" name="fname"><br>
-  Last name: <input type="text" name="lname"><br><br>
-  <input type="button" onclick="myFunction()" value="Submit">
-</form>
+<form id="frm1">
+  Funds: <input type="text" name="funds" <br><br>
+</form> 
+
+<button onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
 
 <script>
 function myFunction() {
-  document.getElementById("frm1").submit();
+  var x = document.getElementById("frm1");
+  var text = "";
+  var i;
+  for (i = 0; i < x.length ;i++) {
+    var support = 13 * 100000
+    var assault = 6 * 125000
+    var medic = 1 * 250000
+    var total = support + assault + medic;
+    var number = x.elements[i].value / total
+    var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " assault<br>" + Math.floor(number * 1) + " medic<br>" 
+  }
+  document.getElementById("demo").innerHTML = text;
 }
 </script>
 
