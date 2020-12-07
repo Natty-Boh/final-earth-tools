@@ -77,17 +77,17 @@ function myFunction() {
 	}
     if (document.getElementById('t98').checked) {
        var text = tanks(x, i,  2150000, "type 98")
-      
-	}
-   
-  }
-  if (document.getElementById('ainf').checked) {
+    }
+    if (document.getElementById('ainf').checked) {
       var assault = 19 * 100000
       var medic = 1 * 250000
       var total = assault + medic;
       var number = (x.elements[i].value.replace(/,/g, "")) / total
       var text = Math.floor(number * 19) + " assault <br>" + Math.floor(number * 1) + " medic <br>" 
       }
+   
+  }
+ 
     document.getElementById("demo").innerHTML = text;
  }
   
