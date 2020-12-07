@@ -9,7 +9,9 @@
 
 <form id="frm1">
   <input type="radio" id="inf" name="unit" value="inf">
-  <label for="inf">Infantry</label><br>
+  <label for="inf">Infantry (Support heavy)</label><br>
+  <input type="radio" id="ainf" name="unit" value="ainf">
+  <label for="ainf">Infantry (Assuault + medic only)</label><br>
   <input type="radio" id="tungsbrem" name="unit" value="tungsbrem">
   <label for="tungsbrem">Tungs/Brem (Tanks Anti-Air)</label><br>
   <input type="radio" id="suireb" name="unit" value="suireb">
@@ -48,7 +50,7 @@ function myFunction() {
      var medic = 1 * 250000
      var total = support + assault + medic;
      var number = (x.elements[i].value.replace(/,/g, "")) / total
-     var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " 		assault<br>" + Math.floor(number * 1) + " medic<br>" 
+     var text = Math.floor(number * 13) + " support<br>" + Math.floor(number * 6) + " 	assault<br>" + Math.floor(number * 1) + " medic<br>" 
 	}
     if (document.getElementById('tungsbrem').checked) {
        var text = tanks(x, i,  3500000, "tungs")
@@ -59,14 +61,14 @@ function myFunction() {
       var reb = 4 * 35000
       var total = sui + reb;
       var number = (x.elements[i].value.replace(/,/g, "")) / total
-      var text = Math.floor(number * 1) + " suicide bombers <br>" + Math.floor(number * 4) + " 		rebels <br>" 
+      var text = Math.floor(number * 1) + " suicide bombers <br>" + Math.floor(number * 4) + " 	rebels <br>" 
       }
       if (document.getElementById('vod').checked) {
       var vod = 3 * 300000
       var mlr = 1 * 3000000
       var total = vod + mlr;
       var number = (x.elements[i].value.replace(/,/g, "")) / total
-      var text = Math.floor(number * 3) + " vodnik <br>" + Math.floor(number * 1) + " 		MLR <br>" 
+      var text = Math.floor(number * 3) + " vodnik <br>" + Math.floor(number * 1) + " 	MLR <br>" 
       }
  
 	 if (document.getElementById('blk').checked) {
@@ -79,6 +81,13 @@ function myFunction() {
 	}
    
   }
+  if (document.getElementById('ainf').checked) {
+      var assault = 19 * 100000
+      var medic = 1 * 250000
+      var total = assault + medic;
+      var number = (x.elements[i].value.replace(/,/g, "")) / total
+      var text = Math.floor(number * 19) + " assault <br>" + Math.floor(number * 1) + " medic <br>" 
+      }
     document.getElementById("demo").innerHTML = text;
  }
   
@@ -97,10 +106,10 @@ function myFunction() {
      var leftover = funds- totalprice
 
      if (leftover >= tungcost) {
-          return (tungcount-1) + " "+ unitname + " <br>" + (bremcount+1) + " 		brem <br>" 
+          return (tungcount-1) + " "+ unitname + " <br>" + (bremcount+1) + " 	brem <br>" 
 
      } else {
-       return (tungcount-2) + " " + unitname + "<br>" + (bremcount+1) + " 		brem <br>"
+       return (tungcount-2) + " " + unitname + "<br>" + (bremcount+1) + " 	brem <br>"
      } 
   } 
 
