@@ -19,7 +19,9 @@
   <input type="radio" id="inf" name="unit" value="inf">
   <label for="inf">Infantry (Support heavy)</label><br>
   <input type="radio" id="ainf" name="unit" value="ainf">
-  <label for="ainf">Infantry (Assuault + medic only)</label><br>
+  <label for="ainf">Infantry (Pure Assuault + medic)</label><br>
+ <input type="radio" id="sinf" name="unit" value="sinf">
+  <label for="sinf">Infantry (Pure Support + medic)</label><br>
   <input type="radio" id="tungsbrem" name="unit" value="tungsbrem">
   <label for="tungsbrem">Tungs/Brem (Tanks Anti-Air)</label><br>
   <input type="radio" id="suireb" name="unit" value="suireb">
@@ -93,6 +95,13 @@ function myFunction() {
       var total = assault + medic;
       var number = (x.elements[i].value.replace(/,/g, "")) / total
       var text = Math.floor(number * 19) + " assault <br>" + Math.floor(number * 1) + " medic <br>" 
+      }
+    if (document.getElementById('sinf').checked) {
+      var support = 19 * 125000
+      var medic = 1 * 250000
+      var total = support + medic;
+      var number = (x.elements[i].value.replace(/,/g, "")) / total
+      var text = Math.floor(number * 19) + " support <br>" + Math.floor(number * 1) + " medic <br>" 
       }
    
   }
